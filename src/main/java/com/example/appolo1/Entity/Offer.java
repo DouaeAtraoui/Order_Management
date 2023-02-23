@@ -16,8 +16,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Offer extends BASE_ENTITY{
     private String label;
+    private String title;
     private String description;
     private Boolean status;
     @OneToMany(mappedBy = "offer", targetEntity = Under_Offer.class, fetch = FetchType.EAGER)
     private List<Under_Offer> underOffers;
+
 }

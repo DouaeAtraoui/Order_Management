@@ -16,13 +16,19 @@ import javax.persistence.*;
 public class Request extends BASE_ENTITY {
     private String reference;
     private String label;
-    private String titre;
+    private String title;
     private String description;
-    private  Boolean status;
+    @Enumerated(EnumType.STRING)
+    private  Status status;
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User createdBy;
     @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
     @OneToOne(mappedBy = "request")
     private Reservation reservation;
+    @ManyToOne
+    @JoinColumn(name="under_Offre_id", nullable = false)
+    private Under_Offer underOffer;
 }

@@ -22,9 +22,14 @@ public class User extends BASE_ENTITY{
     private String passwordToConfirm;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private Boolean status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     private String token;
     //The user will creates some requests
-    @OneToMany(mappedBy = "createdBy", targetEntity = Request.class)
+    @OneToMany(mappedBy = "createdBy", targetEntity = Request.class, fetch = FetchType.LAZY)
     private List<Request> requests;
+    @OneToMany(mappedBy = "createdBy", targetEntity = Reservation.class, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
+    @OneToMany(mappedBy = "createdBy", targetEntity = Order.class, fetch = FetchType.LAZY)
+    private List<Order> orders;
 }
